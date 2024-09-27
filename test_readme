@@ -1,24 +1,64 @@
-PR Size:
+## Pull Request Metrics
 
-Measures the number of lines of code added, modified, or deleted in a Pull Request (PR). Smaller PRs are generally easier to review and are less likely to introduce errors. Smaller code reviews tend to be faster and more effective.
-PR Request Cycle Time:
+Below are the key metrics calculated for pull requests using the GitHub API:
 
-This measures the time from when a PR is opened to when it is closed or merged. A shorter cycle suggests a more efficient workflow, while a longer cycle can indicate bottlenecks or delays in the development process.
-PR Code Review Lead Time:
+### 1. **PR Size**
+- **Description**: Measures the number of lines of code added, modified, or deleted in a Pull Request (PR). 
+- **Calculation**: 
+  - `PR Size = Additions + Deletions + Changed Files`
+- **API Endpoint**: `GET /repos/{owner}/{repo}/pulls/{pull_number}`
 
-Measures the time from when a review is requested for a PR until the reviewer starts reviewing the code. A long lead time can indicate that reviewers are overloaded or that there aren't enough resources allocated for reviews.
-PR Success Rate:
+### 2. **PR Request Cycle Time**
+- **Description**: The time from when a PR is opened to when it is closed or merged.
+- **Calculation**: 
+  - `Cycle Time = merged_at - created_at`
+- **API Endpoint**: `GET /repos/{owner}/{repo}/pulls/{pull_number}`
 
-Represents the percentage of PRs that are successfully merged into the main branch without needing multiple review cycles or significant changes. A low percentage could indicate issues with code quality or misalignment with standards.
-PR Comments Count:
+### 3. **PR Code Review Lead Time**
+- **Description**: The time between the PR being opened and the review starting.
+- **Calculation**: 
+  - `Lead Time = submitted_at (first review) - created_at (PR creation)`
+- **API Endpoint**: `GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews`
 
-This is the number of comments made on a PR. A high number of comments may indicate complex discussions or areas that need more clarification. While some comments are constructive, too many could reflect quality issues or misalignment.
-Negative Feedback Rate:
+### 4. **PR Success Rate**
+- **Description**: Percentage of PRs that are successfully merged into the main branch.
+- **Calculation**: 
+  - `Success Rate = (Number of merged PRs / Total number of PRs) * 100`
+- **API Endpoint**: `GET /repos/{owner}/{repo}/pulls`
 
-Measures the amount of negative feedback received on PRs. This feedback could include requested changes, critical comments about code quality, or the need to rewrite significant sections. A high rate might reflect misunderstandings of requirements or issues with code quality.
-PR Rework Time:
+### 5. **PR Comments Count**
+- **Description**: Number of comments made on a PR.
+- **Calculation**: 
+  - `Comments Count = Number of comments on the PR`
+- **API Endpoint**: 
+  - `GET /repos/{owner}/{repo}/issues/{issue_number}/comments`
+  - `GET /repos/{owner}/{repo}/pulls/{pull_number}/comments`
 
-Measures how long it takes to make the requested changes after the first review of the PR. Long rework time can suggest a lack of clarity in initial requirements or poor code quality in the initial submission.
-PR Review Time:
+### 6. **Negative Feedback Rate**
+- **Description**: Percentage of PRs that receive requested changes (negative feedback).
+- **Calculation**: 
+  - `Negative Feedback Rate = (Number of PRs with requested changes / Total number of PRs) * 100`
+- **API Endpoint**: `GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews`
 
-This is the time a reviewer takes from when they start reviewing a PR to when they complete the review. A prolonged review time could indicate complexity in the code or lack of reviewer availability.
+### 7. **PR Rework Time**
+- **Description**: Time taken to implement requested changes after the first review.
+- **Calculation**: 
+  - `Rework Time = Timestamp of next push after requested_changes - Timestamp of requested_changes`
+- **API Endpoint**: 
+  - `GET /repos/{owner}/{repo}/pulls/{pull_number}/commits`
+
+### 8. **PR Review Time**
+- **Description**: Time a reviewer takes to complete the review once they start.
+- **Calculation**: 
+  - `Review Time = submitted_at (final review) - submitted_at (first review)`
+- **API Endpoint**: `GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews`
+
+## Automating the Calculation
+
+To automate the calculations, follow these steps:
+1. Use the GitHub API to gather relevant data for each pull request.
+2. Extract timestamps and events from the API responses.
+3. Store the data in a database or use a data processing tool (like Python/Pandas) for analysis.
+4. Perform the calculations based on the formulas provided above.
+
+For more information, refer to the [GitHub API Documentation](https://docs.github.com/en/rest).
