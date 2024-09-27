@@ -1,0 +1,16 @@
+### Metric Mapping Table
+
+| Original Metric                    | SonarQube Metric             | Description                                                                                                                                 |
+|------------------------------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| **Code Coverage %**                | `coverage`                   | Percentage of code covered by tests (unit and integration tests).                                                                            |
+| **Security (Known Vulnerabilities)**| `vulnerabilities`            | Count of known security vulnerabilities found in the code.                                                                                   |
+| **Code Duplication**               | `duplicated_lines_density`   | Percentage of duplicated lines of code in the project.                                                                                       |
+| **Code Churn %**                   | *Not directly available*     | No direct metric in SonarQube. You can estimate churn through external tools like Git for code changes over time.                            |
+| **Code Maintainability**           | `sqale_rating`               | Maintainability rating based on technical debt. A rating of 1 is best (low maintenance required), and 5 is worst (high maintenance needed).   |
+| **Unit Test Coverage**             | `line_coverage`              | Unit test coverage measured at the line level.                                                                                               |
+| **Source Unknown**                 | *Not available*              | No specific metric in SonarQube. May require manual tracking or external tools to assess code origin traceability.                            |
+| **Technical Debt**                 | `sqale_index`                | Technical debt expressed in minutes or days, representing the estimated time required to fix issues in the code.                             |
+| **Code Quality (Reliability)**      | `reliability_rating`         | Code quality rating related to the reliability of the code.                                                                                  |
+| **Code Quality (Security)**         | `security_rating`            | Code quality rating related to the security of the code.                                                                                      |
+| **Code Quality (Maintainability)**  | `sqale_rating`               | Code quality rating related to maintainability, which also serves as the "Code Maintainability" metric.                                       |
+
