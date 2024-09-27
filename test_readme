@@ -1,0 +1,24 @@
+PR Size:
+
+Measures the number of lines of code added, modified, or deleted in a Pull Request (PR). Smaller PRs are generally easier to review and are less likely to introduce errors. Smaller code reviews tend to be faster and more effective.
+PR Request Cycle Time:
+
+This measures the time from when a PR is opened to when it is closed or merged. A shorter cycle suggests a more efficient workflow, while a longer cycle can indicate bottlenecks or delays in the development process.
+PR Code Review Lead Time:
+
+Measures the time from when a review is requested for a PR until the reviewer starts reviewing the code. A long lead time can indicate that reviewers are overloaded or that there aren't enough resources allocated for reviews.
+PR Success Rate:
+
+Represents the percentage of PRs that are successfully merged into the main branch without needing multiple review cycles or significant changes. A low percentage could indicate issues with code quality or misalignment with standards.
+PR Comments Count:
+
+This is the number of comments made on a PR. A high number of comments may indicate complex discussions or areas that need more clarification. While some comments are constructive, too many could reflect quality issues or misalignment.
+Negative Feedback Rate:
+
+Measures the amount of negative feedback received on PRs. This feedback could include requested changes, critical comments about code quality, or the need to rewrite significant sections. A high rate might reflect misunderstandings of requirements or issues with code quality.
+PR Rework Time:
+
+Measures how long it takes to make the requested changes after the first review of the PR. Long rework time can suggest a lack of clarity in initial requirements or poor code quality in the initial submission.
+PR Review Time:
+
+This is the time a reviewer takes from when they start reviewing a PR to when they complete the review. A prolonged review time could indicate complexity in the code or lack of reviewer availability.
